@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AnalysisLevel>preview-all</AnalysisLevel>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <ErrorReport>prompt</ErrorReport>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <Optimize>true</Optimize>
+    <OutputPath>$(ElinGamePath)\Package\Mod_$(AssemblyName)\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <TargetFramework>net48</TargetFramework>
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <Target Name="CopyFiles" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="package.xml" DestinationFolder="$(ElinGamePath)\Package\Mod_$(AssemblyName)\" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Elin">
+      <HintPath>$(ElinGamePath)\Elin_Data\Managed\Elin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Plugins.BaseCore">
+      <HintPath>$(ElinGamePath)\Elin_Data\Managed\Plugins.BaseCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ElinGamePath)\Elin_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ElinGamePath)\Elin_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(ElinGamePath)\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BepInEx.Core">
+      <HintPath>$(ElinGamePath)\BepInEx\core\BepInEx.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BepInEx.Unity">
+      <HintPath>$(ElinGamePath)\BepInEx\core\BepInEx.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
